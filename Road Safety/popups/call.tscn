@@ -27,9 +27,9 @@ align = 1
 [node name="Decline" type="Button" parent="."]
 margin_left = 40.0
 margin_top = 220.0
-margin_right = 110.0
+margin_right = 120.0
 margin_bottom = 290.0
-text = "A"
+flat = true
 
 [node name="Accept" type="Button" parent="."]
 margin_left = 170.0

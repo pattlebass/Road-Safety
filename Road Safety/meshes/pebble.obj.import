@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/pebble.obj-629968d2b88b86d96423e8f5be83f8e9.mesh"
+
+[deps]
+
+files=[ "res://.import/pebble.obj-629968d2b88b86d96423e8f5be83f8e9.mesh" ]
+
+source_file="res://meshes/pebble.obj"
+dest_files=[ "res://.import/pebble.obj-629968d2b88b86d96423e8f5be83f8e9.mesh", "res://.import/pebble.obj-629968d2b88b86d96423e8f5be83f8e9.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true

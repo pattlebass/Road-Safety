@@ -13,29 +13,29 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.344577, 0.167815, 0.172737 )
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 3 )
 uv1_scale = Vector3( 64, 64, 1 )
 
-[sub_resource type="PlaneMesh" id=10]
-material = SubResource( 9 )
+[sub_resource type="PlaneMesh" id=3]
+material = SubResource( 2 )
 size = Vector2( 100, 32 )
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 50.1206, 0.001, 2.20019 )
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="CubeMesh" id=5]
 size = Vector3( 4, 0.1, 100 )
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=6]
 albedo_texture = ExtResource( 7 )
 uv1_scale = Vector3( 3, 16, 1 )
 
-[sub_resource type="ProceduralSky" id=11]
+[sub_resource type="ProceduralSky" id=7]
 
-[sub_resource type="Environment" id=7]
+[sub_resource type="Environment" id=8]
 background_mode = 2
-background_sky = SubResource( 11 )
+background_sky = SubResource( 7 )
 background_sky_custom_fov = 80.0
 ambient_light_color = Color( 1, 1, 1, 1 )
 fog_enabled = true
@@ -59,7 +59,6 @@ shape = SubResource( 1 )
 
 [node name="headlight1" type="SpotLight" parent="player"]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0.458305, 0.135321, 0.119301 )
-visible = false
 light_energy = 2.5
 shadow_enabled = true
 shadow_bias = 16.0
@@ -68,7 +67,6 @@ spot_range = 8.1616
 
 [node name="headlight2" type="SpotLight" parent="player"]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0.458305, 0.135321, -0.0998168 )
-visible = false
 light_energy = 2.5
 shadow_enabled = true
 shadow_bias = 16.0
@@ -79,7 +77,7 @@ spot_range = 8.1616
 editor/display_folded = true
 
 [node name="MeshInstance" type="MeshInstance" parent="vegetation"]
-mesh = SubResource( 10 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="grass patches" type="Spatial" parent="vegetation"]
@@ -1092,12 +1090,12 @@ material/1 = null
 editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="road"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="road"]
 transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0, 0, 0 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 8 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -3.44182e-008, 0.616448, -0.787396, 2.69458e-008, 0.787396, 0.616448, 1, -5.32907e-015, -4.37114e-008, -49.5, 2.40571, 0.009 )
@@ -1118,5 +1116,5 @@ transform = Transform( 0.79057, 0, -0.612372, 0.451256, 0.676004, 0.58257, 0.413
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 7 )
+environment = SubResource( 8 )
 [connection signal="timeout" from="popups/Timer" to="popups" method="_on_Timer_timeout"]

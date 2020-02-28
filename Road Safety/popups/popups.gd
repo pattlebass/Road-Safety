@@ -14,9 +14,10 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	var current_popup = popups.get(randi() % popups.size()).instance()
-	current_popup.position = get_rand_position()
-	add_child(current_popup)
+	if get_children().size() < 10:
+		var current_popup = popups.get(randi() % popups.size()).instance()
+		current_popup.position = get_rand_position()
+		add_child(current_popup)
 	
 func get_rand_position():
 	var rand_pos = Vector2(randi() % 500, randi() % 300)

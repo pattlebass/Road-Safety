@@ -40,4 +40,3 @@ func _physics_process(delta):
 		visible = false
 		
 	move_and_slide(velocity * delta)
-

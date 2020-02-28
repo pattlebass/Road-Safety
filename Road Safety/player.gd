@@ -3,16 +3,23 @@ extends KinematicBody
 onready var camera = get_parent().get_node("Camera")
 var car_rigid_scene = preload("res://car_rigid.tscn")
 var velocity = Vector3()
-var speed = 500
+var speed = 1000
 var turn = 200
 
+signal looped
+
 func _ready():
-	pass
+	
+	#Connect signal
+	connect("looped", get_parent(), "looped")
 
 func _physics_process(delta):
+	
 	#Teleport
 	if translation.x >= 40:
 		translation.x = -48
+		emit_signal("looped")
+	
 	#Camera
 	if speed != 0:
 		camera.translation.x = translation.x - 1.5

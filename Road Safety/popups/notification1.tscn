@@ -3,15 +3,15 @@
 [ext_resource path="res://popups/notification1.gd" type="Script" id=1]
 [ext_resource path="res://ui/game/close.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 160, 110 )
 
-[sub_resource type="StreamTexture" id=2]
+[sub_resource type="StreamTexture" id=4]
 flags = 4
 load_path = "res://.import/grey_panel.png-89acf553604fa125cb8e3723367d8ee3.stex"
 
-[sub_resource type="Animation" id=3]
-resource_name = "fade in"
+[sub_resource type="Animation" id=2]
+resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("ui:position")
@@ -42,10 +42,11 @@ tracks/1/keys = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 160, 110 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="ui" type="Node2D" parent="."]
-position = Vector2( -2.0625, 30 )
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 0, 27.1222 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -54,7 +55,7 @@ __meta__ = {
 [node name="bg" type="Sprite" parent="ui"]
 position = Vector2( 160, 110 )
 scale = Vector2( 3.24125, 2.13123 )
-texture = SubResource( 2 )
+texture = SubResource( 4 )
 
 [node name="Button" type="TextureButton" parent="ui"]
 margin_left = 290.0
@@ -66,6 +67,6 @@ expand = true
 stretch_mode = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "fade in"
-"anims/fade in" = SubResource( 3 )
+autoplay = "fade_in"
+anims/fade_in = SubResource( 2 )
 [connection signal="pressed" from="ui/Button" to="ui" method="_on_Button_pressed"]

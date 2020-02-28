@@ -1,21 +1,61 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://popups/notification1.gd" type="Script" id=1]
 [ext_resource path="res://ui/game/close.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 160, 110 )
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/grey_panel.png-89acf553604fa125cb8e3723367d8ee3.stex"
 
-[node name="notification" type="Node2D"]
-script = ExtResource( 1 )
+[sub_resource type="Animation" id=3]
+resource_name = "fade in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ui:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0353412, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 10 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ui:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 1 ) ]
+}
 
-[node name="bg" type="Sprite" parent="."]
+[node name="notification" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 160, 110 )
+shape = SubResource( 2 )
+
+[node name="ui" type="Node2D" parent="."]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="bg" type="Sprite" parent="ui"]
 position = Vector2( 160, 110 )
 scale = Vector2( 3.24125, 2.13123 )
 texture = SubResource( 1 )
 
-[node name="Button" type="TextureButton" parent="."]
+[node name="Button" type="TextureButton" parent="ui"]
 margin_left = 290.0
 margin_top = 10.0
 margin_right = 310.0
@@ -23,4 +63,7 @@ margin_bottom = 30.0
 texture_normal = ExtResource( 2 )
 expand = true
 stretch_mode = 4
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/fade in" = SubResource( 3 )
+[connection signal="pressed" from="ui/Button" to="ui" method="_on_Button_pressed"]

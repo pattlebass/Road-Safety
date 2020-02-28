@@ -11,7 +11,6 @@ func _ready():
 
 func _physics_process(delta):
 	#Teleport
-	print(translation.x)
 	if translation.x >= 40:
 		translation.x = -48
 	#Camera

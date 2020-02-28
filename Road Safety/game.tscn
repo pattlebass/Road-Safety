@@ -29,7 +29,7 @@ size = Vector3( 4, 0.1, 100 )
 
 [sub_resource type="SpatialMaterial" id=6]
 albedo_texture = ExtResource( 7 )
-uv1_scale = Vector3( 3, 16, 1 )
+uv1_scale = Vector3( 3, 20, 1 )
 
 [sub_resource type="ProceduralSky" id=7]
 
@@ -74,7 +74,6 @@ shadow_reverse_cull_face = true
 spot_range = 8.1616
 
 [node name="vegetation" type="StaticBody" parent="."]
-editor/display_folded = true
 
 [node name="MeshInstance" type="MeshInstance" parent="vegetation"]
 mesh = SubResource( 3 )
@@ -1087,7 +1086,6 @@ material/0 = null
 material/1 = null
 
 [node name="road" type="StaticBody" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="road"]
 shape = SubResource( 4 )
@@ -1110,6 +1108,7 @@ theme = ExtResource( 8 )
 script = ExtResource( 9 )
 
 [node name="Timer" type="Timer" parent="popups"]
+autostart = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.79057, 0, -0.612372, 0.451256, 0.676004, 0.58257, 0.413966, -0.736898, 0.534428, 0, 13.53, 0 )

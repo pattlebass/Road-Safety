@@ -1,20 +1,21 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://player.gd" type="Script" id=1]
-[ext_resource path="res://meshes/cars/car1.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://assets/grass.jpg" type="Texture" id=3]
-[ext_resource path="res://meshes/grass1.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://meshes/tree.obj" type="ArrayMesh" id=5]
-[ext_resource path="res://meshes/pebble.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://assets/road.jpg" type="Texture" id=7]
-[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=8]
-[ext_resource path="res://popups/popups.gd" type="Script" id=9]
+[ext_resource path="res://game.gd" type="Script" id=1]
+[ext_resource path="res://player.gd" type="Script" id=2]
+[ext_resource path="res://meshes/cars/car1.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/grass.jpg" type="Texture" id=4]
+[ext_resource path="res://meshes/grass1.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://meshes/tree.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://meshes/pebble.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://assets/road.jpg" type="Texture" id=8]
+[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=9]
+[ext_resource path="res://popups/popups.gd" type="Script" id=10]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.344577, 0.167815, 0.172737 )
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_texture = ExtResource( 3 )
+albedo_texture = ExtResource( 4 )
 uv1_scale = Vector3( 64, 64, 1 )
 
 [sub_resource type="PlaneMesh" id=3]
@@ -28,8 +29,15 @@ extents = Vector3( 50.1206, 0.001, 2.20019 )
 size = Vector3( 4, 0.1, 100 )
 
 [sub_resource type="SpatialMaterial" id=6]
-albedo_texture = ExtResource( 7 )
+albedo_texture = ExtResource( 8 )
 uv1_scale = Vector3( 3, 20, 1 )
+
+[sub_resource type="CubeMesh" id=9]
+size = Vector3( 4, 0.1, 20 )
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_texture = ExtResource( 8 )
+uv1_scale = Vector3( 3, 5, 1 )
 
 [sub_resource type="ProceduralSky" id=7]
 
@@ -42,15 +50,16 @@ fog_enabled = true
 dof_blur_far_transition = 3.58
 dof_blur_far_amount = 0.08
 
-[node name="Spatial" type="Spatial"]
+[node name="game" type="Spatial"]
+script = ExtResource( 1 )
 
 [node name="player" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 0 )
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="car1" type="MeshInstance" parent="player"]
 transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.207479, 0 )
-mesh = ExtResource( 2 )
+mesh = ExtResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="player"]
@@ -84,797 +93,797 @@ editor/display_folded = true
 
 [node name="grass1" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -26.4784, -0.0128036, -2.62764 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass41" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -15.5527, -0.0128036, -3.07471 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass42" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4.28685, -0.0128036, -3.07471 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass46" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.89692, -0.0128036, -3.07471 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass50" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 16.2889, -0.0128036, -3.07471 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass57" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 25.0297, -0.0128036, -2.30341 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass61" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 25.0297, -0.0128036, -2.30341 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass2" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -26.5307, 0, -2.71 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass40" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -15.605, 0, -3.15707 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass43" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4.33915, 0, -3.15707 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass47" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.84463, 0, -3.15707 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass53" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 16.2366, 0, -3.15707 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass54" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 24.9774, 0, -2.38577 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass60" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 24.9774, 0, -2.38577 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass3" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -24.2791, 0, -3.59064 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass38" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -13.3533, 0, -4.03771 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass45" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.0875, 0, -4.03771 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass49" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9.09628, 0, -4.03771 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass52" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 18.4883, 0, -4.03771 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass55" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 27.2291, 0, -3.26641 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass58" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 27.2291, 0, -3.26641 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass4" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -14.5731, 0, 3.75893 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass62" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4.23135, 0, 3.75893 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass70" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.16639, 0, 3.75893 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass84" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 17.6549, 0, 4.40264 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass87" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 30.563, 0, 4.40264 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass99" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 26.9228, 0, -3.36991 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass109" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 16.175, 0, -3.36991 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass117" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.28046, 0, -3.36991 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass123" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10.5773, 0, -3.36991 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass127" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -26.623, 0, -3.36991 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass140" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -32.668, 0, -3.36991 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass18" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -12.8748, 0, 3.84171 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass66" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.53305, 0, 3.84171 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass73" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.8647, 0, 3.84171 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass79" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 19.3533, 0, 4.48542 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass91" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 32.2613, 0, 4.48542 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass96" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 28.6211, 0, -3.28713 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass108" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 17.8733, 0, -3.28713 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass115" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.97877, 0, -3.28713 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass124" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.87895, 0, -3.28713 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass128" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -24.9247, 0, -3.28713 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass138" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -30.9697, 0, -3.28713 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass20" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9.92621, 0, 2.93667 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass67" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.415521, 0, 2.93667 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass75" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 11.8133, 0, 2.93667 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass82" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 22.3018, 0, 3.58038 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass88" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 35.2099, 0, 3.58038 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass98" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 31.5697, 0, -4.19217 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass104" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 20.8219, 0, -4.19217 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass111" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 10.9273, 0, -4.19217 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass118" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -5.93038, 0, -4.19217 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass133" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -21.9761, 0, -4.19217 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass136" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -28.0211, 0, -4.19217 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass22" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -35.0132, 0, 2.93667 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass147" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 23.9433, 0, 2.93667 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass155" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 25.6812, 0, -4.18457 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass24" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -32.293, 0, 2.46525 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass26" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -29.1697, 0, 3.05415 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass149" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 29.7869, 0, 3.05415 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass154" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 31.5247, 0, -4.0671 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass29" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -26.1823, 0, 2.23754 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass30" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -24.7211, 0, 2.8116 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass33" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -23.0653, 0, 3.74721 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass143" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 35.8913, 0, 3.74721 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass158" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 37.6291, 0, -3.37404 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass34" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -18.8291, 0, 3.08055 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass36" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -13.2135, 0, 3.70017 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass5" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -14.6091, -0.0102584, 3.85306 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass63" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4.26734, -0.0102584, 3.85306 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass77" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.1304, -0.0102584, 3.85306 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass83" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 17.619, -0.0102584, 4.49677 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass93" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 30.527, -0.0102584, 4.49677 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass100" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 26.8868, -0.0102584, -3.27578 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass106" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 16.139, -0.0102584, -3.27578 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass113" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.24447, -0.0102584, -3.27578 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass119" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -10.6132, -0.0102584, -3.27578 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass130" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -26.659, -0.0102584, -3.27578 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass134" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -32.7039, -0.0102584, -3.27578 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass19" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -12.9108, -0.0102584, 3.93584 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass68" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.56903, -0.0102584, 3.93584 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass76" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 8.82871, -0.0102584, 3.93584 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass78" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 19.3173, -0.0102584, 4.57955 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass90" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 32.2253, -0.0102584, 4.57955 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass94" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 28.5851, -0.0102584, -3.193 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass102" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 17.8373, -0.0102584, -3.193 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass110" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.94278, -0.0102584, -3.193 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass122" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -8.91494, -0.0102584, -3.193 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass129" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -24.9607, -0.0102584, -3.193 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass139" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -31.0056, -0.0102584, -3.193 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass21" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -9.9622, -0.0102584, 3.0308 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass69" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.379533, -0.0102584, 3.0308 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass74" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 11.7773, -0.0102584, 3.0308 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass80" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 22.2658, -0.0102584, 3.67451 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass86" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 35.1739, -0.0102584, 3.67451 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass95" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 31.5337, -0.0102584, -4.09804 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass107" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 20.7859, -0.0102584, -4.09804 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass116" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 10.8913, -0.0102584, -4.09804 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass121" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -5.96637, -0.0102584, -4.09804 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass131" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -22.0121, -0.0102584, -4.09804 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass135" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -28.0571, -0.0102584, -4.09804 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass23" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -35.0492, -0.0102584, 3.0308 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass150" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 23.9074, -0.0102584, 3.0308 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass157" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 25.6452, -0.0102584, -4.09045 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass25" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -32.329, -0.0102584, 2.55938 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass27" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -29.2057, -0.0102584, 3.14827 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass144" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 29.7509, -0.0102584, 3.14827 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass159" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 31.4887, -0.0102584, -3.97297 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass28" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -26.2182, -0.0102584, 2.33167 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass31" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -24.7571, -0.0102584, 2.90572 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass32" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -23.1012, -0.0102584, 3.84134 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass146" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 35.8553, -0.0102584, 3.84134 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass156" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 37.5931, -0.0102584, -3.27991 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass35" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -18.8651, -0.0102584, 3.17467 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass37" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -13.2495, -0.0102584, 3.7943 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass6" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -38.0203, 0, -4.51173 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass7" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -21.9785, 0, -3.4417 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass39" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11.0528, 0, -3.88877 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass44" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.213054, 0, -3.88877 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass48" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 11.3968, 0, -3.88877 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass51" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 20.7888, 0, -3.88877 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass56" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 29.5296, 0, -3.11747 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass59" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 29.5296, 0, -3.11747 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass8" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11.405, 0, 3.55612 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass64" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.06325, 0, 3.55612 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass71" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 10.3345, 0, 3.55612 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass85" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 20.8231, 0, 4.19983 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass89" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 33.7311, 0, 4.19983 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass101" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 30.0909, 0, -3.57273 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass105" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 19.3431, 0, -3.57273 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass112" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 9.44856, 0, -3.57273 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass125" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -7.40915, 0, -3.57273 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass126" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -23.4549, 0, -3.57273 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass137" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -29.4999, 0, -3.57273 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass9" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -16.9109, 0, 4.22493 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass65" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6.5692, 0, 4.22493 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass72" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 4.82855, 0, 4.22493 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass81" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 15.3171, 0, 4.86865 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass92" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 28.2252, 0, 4.86865 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass97" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 24.585, 0, -2.90391 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass103" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 13.8372, 0, -2.90391 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass114" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.94261, 0, -2.90391 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass120" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -12.9151, 0, -2.90391 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass132" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -28.9608, 0, -2.90391 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass141" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -35.0058, 0, -2.90391 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass10" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -36.4442, 0, -3.77044 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass11" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -35.6102, 0, 4.28074 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass142" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 23.3464, 0, 4.28074 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass151" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 25.0842, 0, -2.8405 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass12" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -36.5049, 0, -3.6738 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass13" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -32.9128, 0, -2.67658 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass14" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -33.4828, 0, -4.47067 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass15" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -31.3246, 0, 4.43216 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass145" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 27.6319, 0, 4.43216 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass153" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 29.3698, 0, -2.68909 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass16" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -30.5387, 0, -2.83159 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass17" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -30.1533, 0, 3.601 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass148" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 28.8033, 0, 3.601 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass152" type="MeshInstance" parent="vegetation/grass patches"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 30.5411, 0, -3.52024 )
-mesh = ExtResource( 4 )
+mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="trees" type="Spatial" parent="vegetation"]
@@ -882,70 +891,70 @@ editor/display_folded = true
 
 [node name="tree" type="MeshInstance" parent="vegetation/trees"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -11.5222, 0.0226631, 3.93176 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="tree7" type="MeshInstance" parent="vegetation/trees"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -22.1656, 0.0226631, 5.60965 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="tree8" type="MeshInstance" parent="vegetation/trees"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -37.9587, 0.0226631, -6.19768 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="tree9" type="MeshInstance" parent="vegetation/trees"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -16.8105, 0.0226631, -3.69475 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="tree10" type="MeshInstance" parent="vegetation/trees"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -38.8188, 0.0226631, 6.20657 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="tree2" type="MeshInstance" parent="vegetation/trees"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.24781, 0.0226631, -3.81209 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="tree3" type="MeshInstance" parent="vegetation/trees"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.34294, 0.0226631, 4.08778 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="tree4" type="MeshInstance" parent="vegetation/trees"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 18.4213, 0.0226631, 6.2051 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="tree5" type="MeshInstance" parent="vegetation/trees"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 25.6757, 0.0226631, -4.27658 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 material/2 = null
 
 [node name="tree6" type="MeshInstance" parent="vegetation/trees"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 25.6757, 0.0226631, -4.27658 )
-mesh = ExtResource( 5 )
+mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
 material/2 = null
@@ -955,133 +964,133 @@ editor/display_folded = true
 
 [node name="pebble" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -39.6486, 0.0204231, 2.78271 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble2" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 19.308, 0.0204231, 2.78271 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble6" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 21.0458, 0.0204231, -4.33853 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble14" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -17.848, 0.0204231, -5.34275 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble39" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -13.6741, 0.0204231, 2.93255 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble8" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -31.9948, 0.0204231, -4.12676 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble21" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.7594, 0.0204231, -4.14192 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble3" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -32.2766, 0.0204231, 3.30229 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble4" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 26.68, 0.0204231, 3.30229 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble7" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 28.4178, 0.0204231, -3.81895 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble10" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -28.1733, 0.0204231, -4.80801 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble29" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 19.6541, 0.0204231, -3.56858 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble35" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 13.7561, 0.0204231, 3.77073 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble38" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6.3021, 0.0204231, 3.45213 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble24" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 7.64306, 0.0204231, -4.02501 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble37" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.72118, 0.0204231, 4.25029 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble48" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.72118, 0.0204231, 4.25029 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble5" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -20.8199, 0.0204231, 3.08662 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble20" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 14.5188, 0.0204231, -5.03885 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble32" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 25.2128, 0.0204231, 3.55506 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble44" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.15457, 0.0204231, 3.23645 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble41" type="MeshInstance" parent="vegetation/pebbles"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 5.15457, 0.0204231, 3.23645 )
-mesh = ExtResource( 6 )
+mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
@@ -1095,6 +1104,13 @@ transform = Transform( -4.37114e-008, 0, -1, 0, 1, 0, 1, 0, -4.37114e-008, 0, 0,
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
 
+[node name="road2" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="road2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
+
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -3.44182e-008, 0.616448, -0.787396, 2.69458e-008, 0.787396, 0.616448, 1, -5.32907e-015, -4.37114e-008, -49.5, 2.40571, 0.009 )
 current = true
@@ -1102,10 +1118,11 @@ fov = 50.0
 size = 2.5
 
 [node name="popups" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-theme = ExtResource( 8 )
-script = ExtResource( 9 )
+theme = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="Timer" type="Timer" parent="popups"]
 autostart = true

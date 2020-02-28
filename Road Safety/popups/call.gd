@@ -7,8 +7,8 @@ func _ready():
 
 
 func _on_Decline_pressed():
-	queue_free()
+	get_parent().queue_free()
 
 
 func _on_Accept_pressed():
-	queue_free()
+	get_parent().queue_free()

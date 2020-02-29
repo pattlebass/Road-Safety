@@ -32,11 +32,26 @@ func _physics_process(delta):
 	if Input.is_action_pressed("right"):
 		velocity.z = turn
 	if Input.is_action_just_pressed("ui_accept"):
-		var car_rigid = car_rigid_scene.instance()
-		translation = car_rigid.translation
-		get_parent().add_child(car_rigid)
-		#car_rigid.apply_central_impulse(Vector3(200, 0, 0))
-		speed = 0
-		visible = false
-		
+		get_parent().spawn_car()
 	move_and_slide(velocity * delta)
+	
+	for ray in $rays.get_children():
+		if !get_parent().game_over && ray.is_colliding() :
+			get_parent().game_over = true
+			var collider = ray.get_collider()
+			
+			#Replace player with rigid
+			var car_rigid = car_rigid_scene.instance()
+			car_rigid.translation = translation
+			get_parent().add_child(car_rigid)
+			car_rigid.apply_central_impulse(Vector3(5, 0, 0))
+			#Replace collider with rigid
+			collider.get_node("CollisionShape").disabled = true
+			var car_rigid2 = car_rigid_scene.instance()
+			car_rigid2.translation = collider.translation
+			car_rigid2.rotation_degrees = collider.rotation_degrees
+			get_parent().add_child(car_rigid2)
+			
+			print(collider.translation)
+			collider.queue_free()
+			queue_free()

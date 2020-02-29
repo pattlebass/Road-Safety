@@ -3,9 +3,9 @@ extends Control
 var frequency = 3
 var notif1_scene = preload("res://popups/notification1.tscn")
 var call_scene = preload("res://popups/call.tscn")
-var popups = {0:notif1_scene, 1:call_scene}
+var message_scene = preload("res://popups/message.tscn")
+var popups = {0:notif1_scene, 1:call_scene, 2:message_scene}
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
 

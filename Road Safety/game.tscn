@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://game.gd" type="Script" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/road.jpg" type="Texture" id=8]
 [ext_resource path="res://ui/ui_theme.tres" type="Theme" id=9]
 [ext_resource path="res://popups/popups.gd" type="Script" id=10]
+[ext_resource path="res://assets/road_intersection.jpg" type="Texture" id=12]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 4 )
@@ -338,7 +339,7 @@ mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass67" type="MeshInstance" parent="vegetation/grass patches"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.415521, 0, 2.93667 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.97872, 0, 2.93667 )
 mesh = ExtResource( 5 )
 material/0 = null
 
@@ -573,7 +574,7 @@ mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass69" type="MeshInstance" parent="vegetation/grass patches"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.379533, -0.0102584, 3.0308 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.44148, -0.0102584, 3.0308 )
 mesh = ExtResource( 5 )
 material/0 = null
 
@@ -708,7 +709,7 @@ mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass44" type="MeshInstance" parent="vegetation/grass patches"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.213054, 0, -3.88877 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.47852, 0, -3.88877 )
 mesh = ExtResource( 5 )
 material/0 = null
 
@@ -738,7 +739,7 @@ mesh = ExtResource( 5 )
 material/0 = null
 
 [node name="grass64" type="MeshInstance" parent="vegetation/grass patches"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.06325, 0, 3.55612 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 3.11266, 0, 3.55612 )
 mesh = ExtResource( 5 )
 material/0 = null
 
@@ -950,7 +951,7 @@ material/1 = null
 material/2 = null
 
 [node name="tree2" type="MeshInstance" parent="vegetation/trees"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.24781, 0.0226631, -3.81209 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.58913, 0.0226631, -3.81209 )
 mesh = ExtResource( 6 )
 material/0 = null
 material/1 = null
@@ -1023,7 +1024,7 @@ material/0 = null
 material/1 = null
 
 [node name="pebble21" type="MeshInstance" parent="vegetation/pebbles"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.7594, 0.0204231, -4.14192 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -3.19869, 0.0204231, -4.14192 )
 mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
@@ -1077,13 +1078,13 @@ material/0 = null
 material/1 = null
 
 [node name="pebble37" type="MeshInstance" parent="vegetation/pebbles"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.72118, 0.0204231, 4.25029 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.15935, 0.0204231, 3.84595 )
 mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
 
 [node name="pebble48" type="MeshInstance" parent="vegetation/pebbles"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.72118, 0.0204231, 4.25029 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.36261, 0.0204231, 4.25029 )
 mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
@@ -1129,11 +1130,19 @@ mesh = SubResource( 4 )
 material/0 = SubResource( 5 )
 
 [node name="road2" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.015, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="road2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
+
+[node name="Sprite3D" type="Sprite3D" parent="road2"]
+transform = Transform( -1.35504e-07, 0, -0.831716, 0, 1, 0, 0.82515, 0, -1.34434e-07, 0, 0.05, 0 )
+axis = 1
+shaded = true
+double_sided = false
+texture = ExtResource( 12 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( -3.44182e-08, 0.616448, -0.787396, 2.69458e-08, 0.787396, 0.616448, 1, -5.32907e-15, -4.37114e-08, -49.5, 2.40571, 0.009 )
@@ -1142,7 +1151,6 @@ fov = 50.0
 size = 2.5
 
 [node name="popups" type="Control" parent="."]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 9 )

@@ -11,3 +11,8 @@ func _physics_process(delta):
 	if !get_parent().game_over:
 		if player.translation.distance_to(translation) > 50:
 			queue_free()
+	if $RayCast.is_colliding():
+		if !$RayCast.get_collider().name == "player":
+			speed = 3
+	else:
+		speed = 5

@@ -3,8 +3,8 @@ extends KinematicBody
 onready var camera = get_parent().get_node("Camera")
 var car_rigid_scene = preload("res://car_rigid.tscn")
 var velocity = Vector3()
-var speed = 1000
-var turn = 200
+var speed = 10
+var turn = 4
 
 signal looped
 
@@ -27,13 +27,17 @@ func _physics_process(delta):
 	#Controls
 	velocity.z = 0
 	velocity.x = speed
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left") && translation.z > -1.5:
 		velocity.z = -turn
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right") && translation.z < 1.5:
 		velocity.z = turn
 	if Input.is_action_just_pressed("ui_accept"):
 		get_parent().spawn_car()
-	move_and_slide(velocity * delta)
+	if Input.is_action_pressed("turbo"):
+		speed = 20
+	else:
+		speed = 10
+	move_and_slide(velocity)
 	
 	for ray in $rays.get_children():
 		if !get_parent().game_over && ray.is_colliding() :

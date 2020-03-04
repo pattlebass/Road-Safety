@@ -14,16 +14,21 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	if get_children().size() < 10:
+	if get_children().size() < 100:
 		var current_popup = popups.get(randi() % popups.size()).instance()
 		current_popup.position = get_rand_position()
 		add_child(current_popup)
 	
 func get_rand_position():
-	var rand_pos = Vector2(randi() % 500, randi() % 300)
+	var rand_pos = Vector2(rand_range(100, OS.window_size.x - 100), rand_range(100, OS.window_size.y - 100))
 
 	#Check if pos overlaps with other popups
 
+	var tries = 0
 	while get_world_2d().get_direct_space_state().intersect_point(rand_pos, 32, [], 2147483647, true, true):
-		rand_pos = Vector2(randi() % 500, randi() % 300)
+		rand_pos = Vector2(rand_range(100, OS.window_size.x - 100), rand_range(100, OS.window_size.y - 100))
+		tries += 1
+		if tries >= 20:
+			break
+	rand_pos = Vector2(int(rand_pos.x), int(rand_pos.y))
 	return rand_pos

@@ -14,7 +14,7 @@ func _process(delta):
 
 
 func _on_Timer_timeout():
-	if get_children().size() < 100:
+	if get_children().size() <= 7:
 		var current_popup = popups.get(randi() % popups.size()).instance()
 		current_popup.position = get_rand_position()
 		add_child(current_popup)

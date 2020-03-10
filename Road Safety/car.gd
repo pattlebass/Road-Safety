@@ -8,6 +8,8 @@ func _physics_process(delta):
 	move_and_collide(velocity * speed * delta)
 	if translation.x >= 40:
 		translation.x = -48
+	if translation.x >= 25:
+		speed = 2
 	if !get_parent().game_over:
 		if player.translation.distance_to(translation) > 50:
 			queue_free()

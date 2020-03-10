@@ -3,7 +3,7 @@
 [ext_resource path="res://meshes/cars/car1.obj" type="ArrayMesh" id=1]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.477948, 0.169219, 0.211035 )
+extents = Vector3( 0.345421, 0.169219, 0.162 )
 
 [node name="RigidBody" type="RigidBody"]
 
@@ -13,5 +13,5 @@ mesh = ExtResource( 1 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.221484, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0788882, 0.221484, 0 )
 shape = SubResource( 1 )

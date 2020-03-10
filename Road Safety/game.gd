@@ -17,12 +17,17 @@ func looped():
 		
 func spawn_car():
 	var car = car_scene.instance()
-	car.velocity = Vector3(1, 0, 0)
 	car.speed = 5
-	car.translation = Vector3($player.translation.x + 20, 0.2, rand_range(-1.5, 1.5))
+	if randi() % 2 == 0:
+		car.velocity = Vector3(-1, 0, 0)
+		car.translation = Vector3($player.translation.x + 10, 0.2, -0.78)
+		car.rotation_degrees.y = 180
+	else:
+		car.velocity = Vector3(1, 0, 0)
+		car.translation = Vector3($player.translation.x + 10, 0.2, 0.78)
 	add_child(car)
 
 
 func _on_Timer_timeout():
-	if !game_over:
+	if !game_over && $player.translation.x < 30:
 		spawn_car()

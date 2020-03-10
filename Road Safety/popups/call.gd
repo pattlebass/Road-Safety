@@ -7,6 +7,8 @@ func _ready():
 	get_parent().get_node("AnimationPlayer").queue("vibrate")
 	#Set name
 	$name.text = names[randi() % names.size()]
+	#Vibrate
+	get_parent().get_parent().get_parent().get_node("phone").play()
 
 func _on_Decline_pressed():
 	get_parent().queue_free()

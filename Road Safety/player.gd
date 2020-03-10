@@ -59,3 +59,4 @@ func _physics_process(delta):
 			print(collider.translation)
 			collider.queue_free()
 			queue_free()
+

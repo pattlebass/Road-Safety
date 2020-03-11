@@ -59,3 +59,13 @@ func _on_try_again_pressed():
 
 func _on_menu_pressed():
 	get_tree().change_scene("res://ui/menu.tscn")
+
+func spawn_powerup():
+	var powerup_scene = preload("res://powerup.tscn")
+	var powerup = powerup_scene.instance()
+	powerup.translation = Vector3($player.translation.x + 10, 0.3, rand_range(-1.3, 1.3))
+	add_child(powerup)
+
+
+func _on_Timer2_timeout():
+	spawn_powerup()

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Car_03.png-4b2d3c1e3b541cbbd34c97afe5b8c7fa.s3tc.stex"
-path.etc2="res://.import/Car_03.png-4b2d3c1e3b541cbbd34c97afe5b8c7fa.etc2.stex"
+path.s3tc="res://.import/bus.png-ecae37af421666b934f2f18f57e9f97a.s3tc.stex"
+path.etc2="res://.import/bus.png-ecae37af421666b934f2f18f57e9f97a.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://meshes/cars/textures/cars/Car_03.png"
-dest_files=[ "res://.import/Car_03.png-4b2d3c1e3b541cbbd34c97afe5b8c7fa.s3tc.stex", "res://.import/Car_03.png-4b2d3c1e3b541cbbd34c97afe5b8c7fa.etc2.stex" ]
+source_file="res://meshes/cars/textures/bus.png"
+dest_files=[ "res://.import/bus.png-ecae37af421666b934f2f18f57e9f97a.s3tc.stex", "res://.import/bus.png-ecae37af421666b934f2f18f57e9f97a.etc2.stex" ]
 
 [params]
 

@@ -47,6 +47,7 @@ func _physics_process(delta):
 			#Replace player with rigid
 			var car_rigid = car_rigid_scene.instance()
 			car_rigid.translation = translation
+			car_rigid.mesh = $car1.mesh
 			get_parent().add_child(car_rigid)
 			car_rigid.apply_central_impulse(Vector3(5, 0, 0))
 			#Replace collider with rigid
@@ -54,6 +55,8 @@ func _physics_process(delta):
 			var car_rigid2 = car_rigid_scene.instance()
 			car_rigid2.translation = collider.translation
 			car_rigid2.rotation_degrees = collider.rotation_degrees
+			car_rigid2.mesh = collider.get_node("MeshInstance").mesh
+			car_rigid2.get_node("CollisionShape").shape = collider.get_node("CollisionShape").shape
 			get_parent().add_child(car_rigid2)
 			
 			print(collider.translation)

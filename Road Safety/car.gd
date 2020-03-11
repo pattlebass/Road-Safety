@@ -4,9 +4,6 @@ var speed = 5
 var velocity = Vector3(0, 0, -1)
 onready var player = get_parent().get_node("player")
 
-func _ready():
-	$MeshInstance.material_override#.albedo_texture = load("res://meshes/cars/textures/cars/Car_0" + str(randi() % 2 +1) + ".png")
-
 func _physics_process(delta):
 	move_and_collide(velocity * speed * delta)
 	if translation.x >= 40:

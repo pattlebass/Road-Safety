@@ -1,7 +1,7 @@
 extends Spatial
 
 var game_over = false
-var car_scene = preload("res://car.tscn")
+var car_scene
 
 func _ready():
 	randomize()
@@ -9,6 +9,7 @@ func _ready():
 func looped():
 	$road2.visible = false
 	if !game_over && randi() % 1 == 0:
+		car_scene = load("res://car" + str(randi()%5 + 1) + ".tscn")
 		$road2.visible = true
 		var car = car_scene.instance()
 		car.rotation_degrees.y = 90
@@ -16,6 +17,7 @@ func looped():
 		add_child(car)
 		
 func spawn_car():
+	car_scene = load("res://car" + str(randi()%5 + 1) + ".tscn")
 	var car = car_scene.instance()
 	car.speed = 5
 	if randi() % 2 == 0:

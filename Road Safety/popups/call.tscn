@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://popups/call.gd" type="Script" id=1]
 [ext_resource path="res://ui/game/grey_panel.png" type="Texture" id=2]
@@ -9,6 +9,46 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 160, 170 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "answer"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ui/Decline:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ui/Accept:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ui/in_a_call:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "fade_in"
@@ -35,7 +75,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -66,8 +106,17 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade_in"
+anims/answer = SubResource( 5 )
 anims/fade_in = SubResource( 2 )
 anims/vibrate = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [node name="ui" type="Node2D" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -97,6 +146,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="in_a_call" type="Label" parent="ui"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 70.0
+margin_top = 207.73
+margin_right = 210.0
+margin_bottom = 282.73
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.6, 0.6, 0.6, 1 )
+text = "In a call
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Decline" type="TextureButton" parent="ui"]
 margin_left = 160.0
 margin_top = 220.0
@@ -105,6 +169,9 @@ margin_bottom = 300.0
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Accept" type="TextureButton" parent="ui"]
 margin_left = 40.0
@@ -117,5 +184,7 @@ stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="timeout" from="Timer" to="ui" method="_on_Timer_timeout"]
+[connection signal="timeout" from="lifetime" to="ui" method="_on_lifetime_timeout"]
 [connection signal="pressed" from="ui/Decline" to="ui" method="_on_Decline_pressed"]
 [connection signal="pressed" from="ui/Accept" to="ui" method="_on_Accept_pressed"]

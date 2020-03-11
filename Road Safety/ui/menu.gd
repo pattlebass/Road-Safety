@@ -5,12 +5,13 @@ func _ready():
 
 
 func _on_play_pressed():
-	get_tree().change_scene("res://ui/tutorial.tscn")
-
-
-func _on_settings_pressed():
-	pass # Replace with function body.
+	$AnimationPlayer.play("fade_out")
 
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "fade_out":
+		get_tree().change_scene("res://ui/tutorial.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/SourceSansPro-Black.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/tutorial.gd" type="Script" id=2]
@@ -12,7 +12,39 @@ size = 20
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
+size = 28
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="tutorial" type="Control"]
 anchor_right = 1.0
@@ -42,31 +74,38 @@ margin_left = 390.0
 margin_right = 890.0
 margin_bottom = 720.0
 rect_min_size = Vector2( 500, 0 )
+custom_constants/separation = 50
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 265.0
+margin_top = 212.0
 margin_right = 500.0
-margin_bottom = 306.0
+margin_bottom = 253.0
 custom_fonts/font = SubResource( 1 )
 text = "Tutorial"
 align = 1
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 310.0
+margin_top = 303.0
 margin_right = 500.0
-margin_bottom = 423.0
+margin_bottom = 416.0
 custom_fonts/font = SubResource( 2 )
 text = "The point of the game is to make it as far as possible without crashing. It may seem easy at first but soon people start calling and messaging you. You must clear your view by either answering or declining. Good luck! "
 align = 1
 autowrap = true
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_left = 234.0
-margin_top = 427.0
-margin_right = 266.0
-margin_bottom = 454.0
+margin_left = 226.0
+margin_top = 466.0
+margin_right = 273.0
+margin_bottom = 508.0
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 3 )
 text = "Ok"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fade_in"
+anims/fade_in = SubResource( 4 )
+anims/fade_out = SubResource( 5 )
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

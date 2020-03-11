@@ -43,7 +43,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="message" type="Area2D"]
@@ -129,6 +129,11 @@ anims/fade_in = SubResource( 5 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 [connection signal="pressed" from="ui/OK" to="ui" method="_on_OK_pressed"]
 [connection signal="pressed" from="ui/See you soon!" to="ui" method="_on_See_you_soon_pressed"]
 [connection signal="pressed" from="ui/Can't talk" to="ui" method="_on_Cant_talk_pressed"]
+[connection signal="timeout" from="lifetime" to="ui" method="_on_lifetime_timeout"]

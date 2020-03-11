@@ -1,21 +1,48 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/SourceSansPro-Black.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/menu.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 1 )
-
 [sub_resource type="DynamicFont" id=1]
-size = 48
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "intro"
+[sub_resource type="Animation" id=6]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("intro:modulate")
@@ -42,7 +69,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -79,7 +106,7 @@ alignment = 2
 margin_top = 699.0
 margin_right = 184.0
 margin_bottom = 720.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Made by Fabian Stefanica"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -104,7 +131,7 @@ __meta__ = {
 margin_top = 242.0
 margin_right = 126.0
 margin_bottom = 304.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Focus"
 align = 1
 __meta__ = {
@@ -123,7 +150,7 @@ __meta__ = {
 [node name="play" type="Button" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
 margin_right = 126.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -134,22 +161,24 @@ visible = false
 margin_top = 42.0
 margin_right = 126.0
 margin_bottom = 74.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Credits"
 
 [node name="exit" type="Button" parent="HBoxContainer/VBoxContainer2/VBoxContainer"]
 margin_top = 42.0
 margin_right = 126.0
 margin_bottom = 74.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
-anims/intro = SubResource( 3 )
+anims/fade_out = SubResource( 6 )
+anims/intro = SubResource( 4 )
 
 [node name="intro" type="Control" parent="."]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -186,10 +215,10 @@ __meta__ = {
 margin_top = 295.0
 margin_right = 500.0
 margin_bottom = 424.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "This game was created in order to raise awareness about reckless driving"
 align = 1
 autowrap = true
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/VBoxContainer/play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer2/VBoxContainer/credits" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer2/VBoxContainer/exit" to="." method="_on_exit_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

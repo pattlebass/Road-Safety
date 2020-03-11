@@ -34,7 +34,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		get_parent().spawn_car()
 	if Input.is_action_pressed("turbo"):
-		speed = 20
+		speed = 15
 	else:
 		speed = 10
 	move_and_slide(velocity)

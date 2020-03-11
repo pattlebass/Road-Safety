@@ -29,5 +29,5 @@ func spawn_car():
 
 
 func _on_Timer_timeout():
-	if !game_over && $player.translation.x < 30:
+	if !game_over && $player.translation.x < 25:
 		spawn_car()

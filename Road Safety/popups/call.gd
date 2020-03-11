@@ -11,7 +11,9 @@ func _ready():
 	get_parent().get_parent().get_parent().get_node("phone").play()
 
 func _on_Decline_pressed():
+	get_parent().get_parent().get_parent().get_node("phone").stop()
 	get_parent().queue_free()
 
 func _on_Accept_pressed():
+	get_parent().get_parent().get_parent().get_node("phone").stop()
 	get_parent().queue_free()

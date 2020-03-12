@@ -4,13 +4,10 @@
 [ext_resource path="res://ui/game/person.png" type="Texture" id=2]
 [ext_resource path="res://ui/SourceSansPro-Black.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://sound/popup.wav" type="AudioStream" id=4]
+[ext_resource path="res://ui/game/grey_panel.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 160, 110 )
-
-[sub_resource type="StreamTexture" id=2]
-flags = 4
-load_path = "res://.import/grey_panel.png-89acf553604fa125cb8e3723367d8ee3.stex"
 
 [sub_resource type="DynamicFont" id=3]
 size = 28
@@ -53,14 +50,16 @@ position = Vector2( 0.000305176, -0.999785 )
 shape = SubResource( 1 )
 
 [node name="ui" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0.588235 )
-position = Vector2( -160, -92.8778 )
+position = Vector2( -160, -120 )
 script = ExtResource( 1 )
 
 [node name="bg" type="Sprite" parent="ui"]
 position = Vector2( 160, 110 )
 scale = Vector2( 3.24125, 2.13123 )
-texture = SubResource( 2 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="OK" type="Button" parent="ui"]
 margin_left = 28.0
@@ -110,10 +109,10 @@ __meta__ = {
 }
 
 [node name="message" type="Label" parent="ui"]
-margin_left = 93.0
-margin_top = 56.0
-margin_right = 305.0
-margin_bottom = 125.0
+margin_left = 92.5298
+margin_top = 75.0
+margin_right = 304.53
+margin_bottom = 144.0
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.6, 0.6, 0.6, 1 )
 text = "This is my boss, Jonathan Hart, a self-made millionaire, he’s quite a guy."

@@ -22,6 +22,7 @@ func _on_Accept_pressed():
 	get_parent().get_parent().get_parent().get_node("phone").stop()
 	get_parent().get_node("AnimationPlayer").play("answer")
 	get_parent().get_node("Timer").start()
+	get_parent().get_node("AudioStreamPlayer").play()
 	
 
 func _on_Timer_timeout():

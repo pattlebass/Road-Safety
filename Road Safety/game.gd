@@ -19,13 +19,12 @@ func _process(delta):
 		score += delta * multiplier
 		$score.text = "Score: " + str(int(score) * 10)
 	
-	if Input.is_action_pressed("turbo"):
-		multiplier = 2
-	else:
-		multiplier = 1
 func looped():
 	$road2.visible = false
-	if !game_over && randi() % 1 == 0:
+	for i in get_children():
+		if "car" in i.name:
+			i.translation.x -= 88
+	if !game_over && randi() % 3 == 0:
 		car_scene = load("res://car" + str(randi()%5 + 1) + ".tscn")
 		$road2.visible = true
 		var car = car_scene.instance()
@@ -40,16 +39,16 @@ func spawn_car():
 	car.speed = 5
 	if randi() % 2 == 0:
 		car.velocity = Vector3(-1, 0, 0)
-		car.translation = Vector3($player.translation.x + 10, 0.2, -0.78)
+		car.translation = Vector3($player.translation.x + 9, 0.2, -0.6)
 		car.rotation_degrees.y = 180
 	else:
 		car.velocity = Vector3(1, 0, 0)
-		car.translation = Vector3($player.translation.x + 10, 0.2, 0.78)
+		car.translation = Vector3($player.translation.x + 9, 0.2, 0.6)
 	add_child(car)
 
 
 func _on_Timer_timeout():
-	if !game_over && $player.translation.x < 20:
+	if !game_over && $player.translation.x < 10:
 		spawn_car()
 
 
@@ -68,4 +67,5 @@ func spawn_powerup():
 
 
 func _on_Timer2_timeout():
-	spawn_powerup()
+	if !game_over && $player.translation.x < 20:
+		spawn_powerup()

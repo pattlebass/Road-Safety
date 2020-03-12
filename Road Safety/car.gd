@@ -8,10 +8,11 @@ var lifetime = 0
 
 func _physics_process(delta):
 	move_and_collide(velocity * speed * delta)
-	if translation.x >= 40:
-		translation.x = -48
-	if translation.x >= 25:
-		speed = 2
+	#if translation.x >= 40:
+	#	translation.x = -48
+	if translation.x >= 20:
+		speed = 1
+		print(speed)
 
 	if $RayCast.is_colliding():
 		if !$RayCast.get_collider().name == "player":

@@ -15,9 +15,12 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Road Safety"
-run/main_scene="res://game.tscn"
+config/name="Focus"
+run/main_scene="res://ui/menu.tscn"
+boot_splash/image="res://black.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [display]
 

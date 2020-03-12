@@ -14,7 +14,7 @@ font_data = ExtResource( 1 )
 size = 20
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "fade_out"
 length = 0.5
 tracks/0/type = "value"
@@ -42,7 +42,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("intro:modulate")
@@ -69,7 +69,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -173,8 +173,8 @@ text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "intro"
-anims/fade_out = SubResource( 6 )
-anims/intro = SubResource( 4 )
+anims/fade_out = SubResource( 4 )
+anims/intro = SubResource( 5 )
 
 [node name="intro" type="Control" parent="."]
 visible = false
@@ -215,7 +215,7 @@ __meta__ = {
 margin_top = 295.0
 margin_right = 500.0
 margin_bottom = 424.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "This game was created in order to raise awareness about reckless driving"
 align = 1
 autowrap = true

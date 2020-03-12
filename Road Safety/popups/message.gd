@@ -1,14 +1,12 @@
 extends Node2D
 
 var names = ["Adah", "James", "Michael", "Adam", "Richard", "John", "Nova", "Aura", "Pearl", "Billie"]
-var messages = ["Wanna hang out tomorrow?", "Hey, want to go out?", "Don't forget to finish the report!", "Can you buy a loaf of bread?"]
-var appeared
+var messages = ["Wanna hang out tomorrow?", "Hey, do want to go out?", "Don't forget to finish the report!", "Can you buy a loaf of bread?"]
 
 func _ready():
 	randomize()
 	$name.text = names[randi() % names.size()]
 	$message.text = messages[randi() % messages.size()]
-	appeared = true
 
 func _on_OK_pressed():
 	get_parent().get_node("AnimationPlayer").play_backwards("fade_in")

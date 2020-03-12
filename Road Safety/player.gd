@@ -12,6 +12,12 @@ func _ready():
 	
 	#Connect signal
 	connect("looped", get_parent(), "looped")
+	
+	#Add exception
+	for ray in $rays.get_children():
+		ray.add_exception(get_parent().get_node("road"))
+		ray.add_exception(get_parent().get_node("road2"))
+		
 
 func _physics_process(delta):
 	
@@ -27,16 +33,10 @@ func _physics_process(delta):
 	#Controls
 	velocity.z = 0
 	velocity.x = speed
-	if Input.is_action_pressed("left") && translation.z > -1.5:
+	if Input.is_action_pressed("left") && translation.z > -1:
 		velocity.z = -turn
-	if Input.is_action_pressed("right") && translation.z < 1.5:
+	if Input.is_action_pressed("right") && translation.z < 1:
 		velocity.z = turn
-	if Input.is_action_just_pressed("ui_accept"):
-		get_parent().spawn_car()
-	if Input.is_action_pressed("turbo"):
-		speed = 15
-	else:
-		speed = 10
 	move_and_slide(velocity)
 	
 	for ray in $rays.get_children():
@@ -59,7 +59,32 @@ func _physics_process(delta):
 			car_rigid2.get_node("CollisionShape").shape = collider.get_node("CollisionShape").shape
 			get_parent().add_child(car_rigid2)
 			
-			print(collider.translation)
+			print(collider.name)
 			collider.queue_free()
 			queue_free()
 
+func _process(delta):
+	if !$powerup_timer.is_stopped():
+		get_parent().get_node("ProgressBar").value = $powerup_timer.time_left
+
+func poweredup(powerup):
+	if powerup == "speed":
+		get_parent().multiplier = 1.5
+		speed = 15
+		$powerup_timer.start(8)
+		$engine_audio.pitch_scale = 1.5
+		get_parent().get_node("ProgressBar").max_value = 8
+		get_parent().get_node("ProgressBar/Label").text = "Turbo & x1.5 Score"
+	if powerup == "multiplier":
+		get_parent().multiplier = 2
+		$powerup_timer.start(5)
+		get_parent().get_node("ProgressBar").max_value = 5
+		get_parent().get_node("ProgressBar/Label").text = "x2 Score"
+	get_parent().get_node("AnimationPlayer").play("powerup")
+
+
+func _on_powerup_timer_timeout():
+	$engine_audio.pitch_scale = 1.3
+	speed = 10
+	get_parent().multiplier = 1
+	get_parent().get_node("AnimationPlayer").play_backwards("powerup")

@@ -52,14 +52,14 @@ size = Vector2( 100, 32 )
 extents = Vector3( 50.121, 0.055, 2.013 )
 
 [sub_resource type="CubeMesh" id=8]
-size = Vector3( 3, 0.1, 100 )
+size = Vector3( 2.5, 0.1, 100 )
 
 [sub_resource type="SpatialMaterial" id=9]
 albedo_texture = ExtResource( 8 )
 uv1_scale = Vector3( 3, 20, 1 )
 
 [sub_resource type="CubeMesh" id=10]
-size = Vector3( 3, 0.121, 20 )
+size = Vector3( 2.5, 0.121, 20 )
 
 [sub_resource type="SpatialMaterial" id=11]
 albedo_texture = ExtResource( 8 )
@@ -202,7 +202,7 @@ wait_time = 10.0
 autostart = true
 
 [node name="player" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47.4549, 0.2, 0.6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -48.637, 0.2, 0.53 )
 script = ExtResource( 2 )
 
 [node name="car1" type="MeshInstance" parent="player"]
@@ -1281,8 +1281,8 @@ mesh = SubResource( 10 )
 material/0 = SubResource( 11 )
 
 [node name="Sprite3D" type="Sprite3D" parent="road2"]
-transform = Transform( -1.35713e-07, 0, -0.832, 0, 1, 0, 0.833, 0, -1.3555e-07, -0.0218526, 0.051, -0.00161376 )
-pixel_size = 0.0075
+transform = Transform( -1.38374e-07, 0, -0.848316, 0, 1, 0, 0.840431, 0, -1.36759e-07, -0.00188351, 0.051, -0.00161376 )
+pixel_size = 0.0062
 axis = 1
 shaded = true
 double_sided = false

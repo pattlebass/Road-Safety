@@ -4,7 +4,7 @@ onready var camera = get_parent().get_node("Camera")
 var car_rigid_scene = preload("res://car_rigid.tscn")
 var velocity = Vector3()
 var speed = 10
-var turn = 4
+var turn = 3
 
 signal looped
 
@@ -37,6 +37,19 @@ func _physics_process(delta):
 		velocity.z = -turn
 	if Input.is_action_pressed("right") && translation.z < 1:
 		velocity.z = turn
+	if Input.is_action_pressed("break"):
+		if speed == 10:
+			speed = 6
+			$engine_audio.pitch_scale = 1.25
+		if speed == 15:
+			speed = 12
+			$engine_audio.pitch_scale = 1.4
+	elif speed == 6:
+		speed = 10
+		$engine_audio.pitch_scale = 1.3
+	elif speed == 12:
+		speed = 15
+		$engine_audio.pitch_scale = 1.5
 	move_and_slide(velocity)
 	
 	for ray in $rays.get_children():
@@ -57,6 +70,7 @@ func _physics_process(delta):
 			car_rigid2.rotation_degrees = collider.rotation_degrees
 			car_rigid2.mesh = collider.get_node("MeshInstance").mesh
 			car_rigid2.get_node("CollisionShape").shape = collider.get_node("CollisionShape").shape
+			car_rigid2.get_node("MeshInstance").scale = collider.get_node("MeshInstance").scale
 			get_parent().add_child(car_rigid2)
 			
 			print(collider.name)

@@ -39,11 +39,11 @@ func spawn_car():
 	car.speed = 5
 	if randi() % 2 == 0:
 		car.velocity = Vector3(-1, 0, 0)
-		car.translation = Vector3($player.translation.x + 9, 0.2, -0.6)
+		car.translation = Vector3($player.translation.x + 9, 0.2, -0.53)
 		car.rotation_degrees.y = 180
 	else:
 		car.velocity = Vector3(1, 0, 0)
-		car.translation = Vector3($player.translation.x + 9, 0.2, 0.6)
+		car.translation = Vector3($player.translation.x + 9, 0.2, 0.53)
 	add_child(car)
 
 
@@ -62,7 +62,7 @@ func _on_menu_pressed():
 func spawn_powerup():
 	var powerup_scene = preload("res://powerup.tscn")
 	var powerup = powerup_scene.instance()
-	powerup.translation = Vector3($player.translation.x + 10, 0.3, rand_range(-1.3, 1.3))
+	powerup.translation = Vector3($player.translation.x + 10, 0.3, rand_range(-0.9, 0.9))
 	add_child(powerup)
 
 

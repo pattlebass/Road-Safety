@@ -4,18 +4,18 @@
 [ext_resource path="res://meshes/cars/truck.obj" type="ArrayMesh" id=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.594163, 0.319406, 0.250475 )
+extents = Vector3( 0.593555, 0.319406, 0.305939 )
 
 [node name="car" type="KinematicBody"]
 script = ExtResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.2, 0 )
+transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.012, 0, 0.2, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0.2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.062011, 0.2, 0 )
 shape = SubResource( 1 )
 
 [node name="RayCast" type="RayCast" parent="."]

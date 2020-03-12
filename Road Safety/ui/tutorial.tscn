@@ -78,29 +78,32 @@ custom_constants/separation = 50
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 183.0
+margin_top = 139.0
 margin_right = 500.0
-margin_bottom = 224.0
+margin_bottom = 180.0
 custom_fonts/font = SubResource( 1 )
 text = "Tutorial"
 align = 1
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 274.0
+margin_top = 230.0
 margin_right = 500.0
-margin_bottom = 445.0
+margin_bottom = 488.0
 custom_fonts/font = SubResource( 2 )
 text = "The purpose of the game is to make it as far as possible without crashing. It may seem easy at first but soon people start calling and messaging you. You must clear your view by either answering or declining.
 There are also power-ups scattered around the road.
+
+Space = Brake
+
 Good luck! "
 align = 1
 autowrap = true
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
 margin_left = 226.0
-margin_top = 495.0
+margin_top = 538.0
 margin_right = 273.0
-margin_bottom = 537.0
+margin_bottom = 580.0
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 3 )
 text = "Ok"
